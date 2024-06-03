@@ -1,6 +1,6 @@
 ## Cookies Manager
 
--First, add a script tag above your main script tag in your HTML file:
+-First, add a script tag for the cookies library above your main script tag in your HTML file:
 ```
 <script src="cookie.js"></script> // cookies library
 <script src="script.js"></script> // your script
