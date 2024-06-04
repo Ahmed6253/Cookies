@@ -40,7 +40,7 @@ function allCookieList() {
   for (let i = 0; i < arr.length; i++) {
     cookies.push(arr[i].trim().split("="));
   }
-  if (cookies.length === 0) {
+  if (cookies[0].length === 1) {
     throw Error("You do not have any cookies");
   }
   return cookies;
@@ -58,6 +58,3 @@ function hasCookie(cookieName) {
   return hasCookie;
 }
 
-setCookie("ahmed", "ahmed");
-
-console.log(hasCookie("ah"));
