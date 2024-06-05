@@ -1,7 +1,14 @@
 //set
 function setCookie(cookieName, cookieValue, expiryDate = "") {
-  if (!cookieName || !cookieValue || typeof cookieName !== "string") {
-    throw new Error("Your cookie data is missing or not valid");
+  if (
+    !cookieName ||
+    !cookieValue ||
+    typeof cookieName !== "string" ||
+    arguments.length > 3
+  ) {
+    throw new Error(
+      "Your cookie data is missing or not valid, or you added more than 3 arguments"
+    );
   } else if (expiryDate !== "" && expiryDate instanceof Date === false) {
     throw new Error("Set a valid date");
   }
@@ -10,8 +17,10 @@ function setCookie(cookieName, cookieValue, expiryDate = "") {
 }
 //delete
 function deleteCookie(cookieName) {
-  if (!cookieName || typeof cookieName !== "string") {
-    throw new Error("Cookie name is not valid");
+  if (!cookieName || typeof cookieName !== "string" || arguments.length > 1) {
+    throw new Error(
+      "Cookie name is not valid, or you added more than one argument"
+    );
   }
   if (!getCookie(cookieName)) {
     throw Error("this cookie does not existe");
@@ -20,8 +29,10 @@ function deleteCookie(cookieName) {
 }
 //get
 function getCookie(cookieName) {
-  if (!cookieName || typeof cookieName !== "string") {
-    throw new Error("Cookie name is not valid");
+  if (!cookieName || typeof cookieName !== "string" || arguments.length > 1) {
+    throw new Error(
+      "Cookie name is not valid, or you added more than one argument"
+    );
   }
   let cookies = allCookieList();
   let cookie;
@@ -35,6 +46,9 @@ function getCookie(cookieName) {
 }
 //get all
 function allCookieList() {
+  if (arguments.length > 0) {
+    throw new Error("You do not need any arguments for this function");
+  }
   let arr = document.cookie.split(";");
   let cookies = [];
   for (let i = 0; i < arr.length; i++) {
@@ -47,8 +61,10 @@ function allCookieList() {
 }
 //check
 function hasCookie(cookieName) {
-  if (!cookieName || typeof cookieName !== "string") {
-    throw new Error("Cookie name is not valid");
+  if (!cookieName || typeof cookieName !== "string" || arguments.length > 1) {
+    throw new Error(
+      "Cookie name is not valid, or you added more than one argument"
+    );
   }
   let cookies = allCookieList();
   let hasCookie = false;
@@ -57,4 +73,3 @@ function hasCookie(cookieName) {
   }
   return hasCookie;
 }
-
